@@ -1,3 +1,5 @@
+![publish image to docker hub](https://github.com/StephenRoille/docker-tldr/actions/workflows/publish.yml/badge.svg)
+
 # tldr
 
 This is an unofficial image for the [tldr](https://tldr.sh/) project. More specifically it dockerize the [Python client](https://github.com/tldr-pages/tldr-python-client).
