@@ -1,7 +1,7 @@
 FROM python:alpine
-RUN apk update && \
-    apk add --no-cache bash
-RUN pip install tldr
+RUN apk update
+
+RUN pip3 install --no-cache tldr
 
 ENV TLDR_COLOR_NAME="red"
 ENV TLDR_COLOR_DESCRIPTION="white"
