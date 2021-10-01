@@ -32,17 +32,17 @@ jobs:
       - run: git push origin ${GITHUB_REF#refs/heads/}
       - run: echo '${{ toJSON(github) }}'
 
-  publish-readme:
-    name: Publish READ.md to DockerHub
-    needs: [update-readme]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: echo '${{ toJSON(github) }}'
-      - run: sleep 10
-      - run: pwd
-      - run: ls -la
-      - run: cat README.md
+      # publish-readme:
+      #   name: Publish READ.md to DockerHub
+      #   needs: [update-readme]
+      #   runs-on: ubuntu-latest
+      #   steps:
+      #     - uses: actions/checkout@v2
+      #     - run: echo '${{ toJSON(github) }}'
+      #     - run: sleep 10
+      #     - run: pwd
+      #     - run: ls -la
+      #     - run: cat README.md
       - uses: christian-korneck/update-container-description-action@v1
         env:
           DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
