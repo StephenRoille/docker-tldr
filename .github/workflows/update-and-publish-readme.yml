@@ -16,7 +16,7 @@ jobs:
       - run: ls -la
       - run: cat README.md
       - run: cat Dockerfile
-      - run: sed -i "s/DOCKERFILE_CONTENT/$(cat Dockerfile)" README.md'
+      - run: sed -i "s/DOCKERFILE_CONTENT/$(cat Dockerfile)" README.md
       - run: cat README.md
 
   publish-readme:
@@ -28,6 +28,7 @@ jobs:
         DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
         DOCKER_PASS: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
+      - uses: actions/checkout@v2
       - run: pwd
         if: always()
       - run: ls -la /
