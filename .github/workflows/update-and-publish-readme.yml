@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: chko/docker-pushrm:1
+      - uses: christian-korneck/update-container-description-action@v1
         env:
           DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKER_PASS: ${{ secrets.DOCKERHUB_PASSWORD }}
