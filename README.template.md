@@ -45,7 +45,7 @@ Create an alias in your **run commands** file (`.bashrc`, `.zshrc`, ...) to easi
 alias tldr='docker container run --rm -t -v ~/.tldr:/root/tldr stephenroille/tldr'
 ```
 
-Notes:
+**Notes**
 
 -   `--rm`: remove the container after execution;
 -   `-t`: allocate a pseudo-TTY to get a colored output;
@@ -80,7 +80,7 @@ $ tldr redis-server
     redis-server --loglevel warning|notice|verbose|debug
 ```
 
-Default behavior when no argument is provided to the `tldr` command (see `CMD = ["--help"]` in `Dockerfile`),
+Default behavior when no argument is provided to the `tldr` command (due to `CMD = ["--help"]` in the `Dockerfile`),
 
 ```bash
 $ tldr
