@@ -4,6 +4,8 @@
 
 This is an unofficial image for the [tldr](https://tldr.sh/) project. More specifically it dockerize the [tldr Python client](https://github.com/tldr-pages/tldr-python-client).
 
+![Animation: docker-tldr CLI usage](https://raw.githubusercontent.com/StephenRoille/docker-tldr/master/assets/animation.svg)
+
 The source code is available on GitHub at [stephenroille/docker-tldr](https://github.com/StephenRoille/docker-tldr).
 
 The image is stored on DockerHub at [stephenroille/tldr](https://hub.docker.com/repository/docker/stephenroille/tldr) and is based of the following `Dockerfile`.
