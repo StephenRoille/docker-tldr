@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - master
-    paths: Dockerfile
+    paths:
+      - Dockerfile
 
 jobs:
   build-and-publish:
