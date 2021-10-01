@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update README.md using README.template.md and Dockerfile
         run: |
-          sed -i 's/DOCKERFILE_CONTENT/r Dockerfile' README.template.md
+          sed -i 's/```dockerfile/r Dockerfile' README.template.md
           rm README.md
           mv README.template.md README.md
       - name: Configure git, commit and push to origin/"${{ env.branch }}"

@@ -7,7 +7,7 @@ This is an unofficial image for the [tldr](https://tldr.sh/) project. More speci
 This image can be found on DockerHub at [stephenroille/tldr](https://hub.docker.com/repository/docker/stephenroille/tldr) and is based of the following `Dockerfile`.
 
 ```dockerfile
-DOCKERFILE_CONTENT
+
 ```
 
 ## Example
@@ -45,4 +45,4 @@ The volume maps the `/root/tldr` cache directory from the container to `~/.tldr`
 
 ## TEST
 
-change 32
+change 33
