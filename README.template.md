@@ -1,4 +1,4 @@
-![publish image to docker hub](https://github.com/StephenRoille/docker-tldr/actions/workflows/publish.yml/badge.svg)
+![publish image to docker hub](https://github.com/StephenRoille/docker-tldr/actions/workflows/publish-image-and-readme.yml/badge.svg)
 
 # tldr
 
