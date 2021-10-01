@@ -16,7 +16,7 @@ jobs:
       - run: ls -la
       - run: cat README.md
       - run: cat Dockerfile
-      - run: sed -i 's/DOCKERFILE_CONTENT/"$(cat Dockerfile)"/' README.md
+      - run: sed '/DOCKERFILE_CONTENT/r Dockerfile' README.md
       - run: cat README.md
 
   publish-readme:
