@@ -4,7 +4,11 @@
 
 This is an unofficial image for the [tldr](https://tldr.sh/) project. More specifically it dockerize the [Python client](https://github.com/tldr-pages/tldr-python-client).
 
-This image can be found on DockerHub at [stephenroille/tldr](https://hub.docker.com/repository/docker/stephenroille/tldr).
+This image can be found on DockerHub at [stephenroille/tldr](https://hub.docker.com/repository/docker/stephenroille/tldr) and is based of the following `Dockerfile`.
+
+```dockerfile
+DOCKERFILE_CONTENT
+```
 
 ## Example
 
@@ -41,4 +45,4 @@ The volume maps the `/root/tldr` cache directory from the container to `~/.tldr`
 
 ## TEST
 
-change 1
+change 2
