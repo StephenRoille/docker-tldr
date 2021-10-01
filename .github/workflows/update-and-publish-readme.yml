@@ -16,30 +16,20 @@ jobs:
       - run: ls -la
       - run: cat README.md
       - run: cat Dockerfile
-      - run: sed -i "s/DOCKERFILE_CONTENT/$(cat Dockerfile)" README.md
+      - run: sed -i "s/DOCKERFILE_CONTENT/$(cat Dockerfile)/" README.md
       - run: cat README.md
 
   publish-readme:
     name: Publish READ.md to DockerHub
     runs-on: ubuntu-latest
-    container:
-      image: chko/docker-pushrm:1
-      env:
-        DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKER_PASS: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
       - uses: actions/checkout@v2
-      - run: pwd
-        if: always()
-      - run: ls -la /
-        if: always()
-      - run: ls -la /tldr
-        if: always()
-      - run: /docker-pushrm --help
-        if: always()
-      - run: ls -la /github
-        if: always()
-      - run: ls -la /github/home
-        if: always()
-      - run: ls -la /github/workflow
-        if: always()
+      - uses: chko/docker-pushrm:1
+        env:
+          DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKERHUB_PASSWORD }}
+        with:
+          destination_container_repo: ${{ secrets.DOCKERHUB_REPOSITORY }}
+          provider: dockerhub
+          short_description: "my short description 😊"
+          readme_file: "README.md"
