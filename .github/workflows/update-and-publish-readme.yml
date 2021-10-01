@@ -15,7 +15,14 @@ jobs:
       - run: sed '/DOCKERFILE_CONTENT/r Dockerfile' README.md
       - run: git log
       - run: git remote -v
+      - run: |
+          git config --local user.name ${{ github.head_commit.committer.name }}
+          git config --local user.email ${{ github.head_commit.committer.email }}
       - run: git config --list
+      - run: git commit --amend
+      - run: git log
+      - run: echo ${GITHUB_REF#refs/heads/}
+      - run: git push origin ${GITHUB_REF#refs/heads/}
       - run: echo '${{ toJSON(github) }}'
 
   publish-readme:
