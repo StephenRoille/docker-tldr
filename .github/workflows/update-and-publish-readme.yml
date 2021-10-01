@@ -16,8 +16,8 @@ jobs:
       - run: git log
       - run: git remote -v
       - run: |
-          git config --local user.name "${{ github.head_commit.committer.name }}"
-          git config --local user.email "${{ github.head_commit.committer.email }}"
+          git config --local user.name "${{ github.event.head_commit.committer.name }}"
+          git config --local user.email "${{ github.event.head_commit.committer.email }}"
       - run: git config --list
       - run: git commit --amend
       - run: git log
