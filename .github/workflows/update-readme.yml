@@ -3,6 +3,9 @@ on:
   push:
     branches-ignore:
       - master
+    paths:
+      - README.template.md
+      - Dockerfile
   pull_request:
     branches:
       - master
@@ -20,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update README.md using README.template.md and Dockerfile
         run: |
-          sed -i '/DOCKERFILE_CONTENT/r Dockerfile' README.template.md
+          sed -i 's/DOCKERFILE_CONTENT/r Dockerfile' README.template.md
           rm README.md
           mv README.template.md README.md
       - name: Configure git, commit and push to origin/"${{ env.branch }}"
