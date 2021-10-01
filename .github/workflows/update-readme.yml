@@ -6,12 +6,6 @@ on:
     paths:
       - README.template.md
       - Dockerfile
-  pull_request:
-    branches:
-      - master
-    paths:
-      - README.template.md
-      - Dockerfile
 
 jobs:
   build-readme:
