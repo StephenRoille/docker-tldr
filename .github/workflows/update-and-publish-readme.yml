@@ -16,7 +16,7 @@ jobs:
       - run: ls -la
       - run: cat README.md
       - run: cat Dockerfile
-      - run: sed -i "s/DOCKERFILE_CONTENT/$(cat Dockerfile)/" README.md
+      - run: sed -i 's/DOCKERFILE_CONTENT/$(cat Dockerfile)/' README.md
       - run: cat README.md
 
   publish-readme:
@@ -31,5 +31,5 @@ jobs:
         with:
           destination_container_repo: ${{ secrets.DOCKERHUB_REPOSITORY }}
           provider: dockerhub
-          short_description: "my short description 😊"
+          short_description: ${{ github.event.repository.description }}
           readme_file: "README.md"

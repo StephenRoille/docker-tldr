@@ -2,7 +2,7 @@
 
 # tldr
 
-This is an unofficial image for the [tldr](https://tldr.sh/) project. More specifically it dockerize the [Python client](https://github.com/tldr-pages/tldr-python-client).
+This is an unofficial image for the [tldr](https://tldr.sh/) project. More specifically it dockerize the [tldr Python client](https://github.com/tldr-pages/tldr-python-client).
 
 This image can be found on DockerHub at [stephenroille/tldr](https://hub.docker.com/repository/docker/stephenroille/tldr) and is based of the following `Dockerfile`.
 
@@ -45,4 +45,4 @@ The volume maps the `/root/tldr` cache directory from the container to `~/.tldr`
 
 ## TEST
 
-change 5
+change 6
