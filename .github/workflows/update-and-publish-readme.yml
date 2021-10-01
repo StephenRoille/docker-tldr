@@ -16,6 +16,7 @@ jobs:
       - run: git log
       - run: git remote -v
       - run: git config --list
+      - run: echo '${{ toJSON(github) }}'
 
   publish-readme:
     name: Publish READ.md to DockerHub
