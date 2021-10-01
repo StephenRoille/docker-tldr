@@ -1,4 +1,4 @@
-![publish image to docker hub](https://github.com/StephenRoille/docker-tldr/actions/workflows/publish.yml/badge.svg)
+![publish image to docker hub](https://github.com/StephenRoille/docker-tldr/actions/workflows/publish-image-and-readme.yml/badge.svg)
 
 # tldr
 
@@ -8,6 +8,24 @@ This image can be found on DockerHub at [stephenroille/tldr](https://hub.docker.
 
 ```dockerfile
 DOCKERFILE_CONTENT
+FROM python:alpine
+RUN apk update
+
+RUN pip3 install --no-cache tldr
+
+ENV TLDR_COLOR_NAME="red"
+ENV TLDR_COLOR_DESCRIPTION="white"
+ENV TLDR_COLOR_EXAMPLE="cyan"
+ENV TLDR_COLOR_COMMAND="magenta"
+ENV TLDR_COLOR_PARAMETER="white"
+ENV TLDR_LANGUAGE="en"
+ENV TLDR_CACHE_ENABLED=1
+ENV TLDR_CACHE_MAX_AGE=720
+ENV TLDR_PAGES_SOURCE_LOCATION="https://raw.githubusercontent.com/tldr-pages/tldr/master/pages"
+ENV TLDR_DOWNLOAD_CACHE_LOCATION="https://tldr-pages.github.io/assets/tldr.zip"
+
+ENTRYPOINT [ "tldr" ]
+CMD ["--help"]
 ```
 
 ## Example
@@ -42,3 +60,7 @@ alias tldr='docker container run --rm -t -v ~/.tldr:/root/tldr stephenroille/tld
 ```
 
 The volume maps the `/root/tldr` cache directory from the container to `~/.tldr` on your host machine and allows to increase the execution speed on subsequent runs.
+
+## TEST
+
+change 31
