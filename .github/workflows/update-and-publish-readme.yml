@@ -23,7 +23,7 @@ jobs:
           git config --local user.email "${{ github.event.head_commit.committer.email }}"
       - run: git config --list
       - run: git add README.md
-      - run: git commit -m "bot: Auto-build README.md file"
+      - run: git commit -m "[bot] Auto-build README.md file"
       - run: git status
       - run: cat README.md
       - run: git diff README.md
