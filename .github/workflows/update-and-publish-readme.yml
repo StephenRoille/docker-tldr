@@ -20,7 +20,7 @@ jobs:
           git config --local user.email "${{ github.event.head_commit.committer.email }}"
       - run: git config --list
       - run: git add README.md
-      - run: git commit --amend -m "${{ gihtub.event.message }}"
+      - run: git commit --amend -m "${{ gihtub.event.message}}"
       - run: git log
       - run: echo ${GITHUB_REF#refs/heads/}
       - run: git push origin ${GITHUB_REF#refs/heads/}
