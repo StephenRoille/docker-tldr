@@ -1,7 +1,10 @@
 name: Build README using Dockerfile and README.template.md file
 on:
-  pull_request:
+  push:
     branches-ignore:
+      - master
+  pull_request:
+    branches:
       - master
     paths:
       - README.template.md
