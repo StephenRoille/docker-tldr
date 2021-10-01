@@ -1,0 +1,29 @@
+name: Build README using Dockerfile and README.template.md file
+on:
+  pull_request:
+    branches-ignore:
+      - master
+    paths:
+      - README.template.md
+      - Dockerfile
+
+jobs:
+  build-readme:
+    name: Build README Dockerfile content in README.md file
+    runs-on: ubuntu-latest
+    env:
+      branch: ${GITHUB_REF#refs/heads/}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update README.md using README.template.md and Dockerfile
+        run: |
+          sed -i '/DOCKERFILE_CONTENT/r Dockerfile' README.template.md
+          rm README.md
+          mv README.template.md README.md
+      - name: Configure git, commit and push to origin/"${{ env.branch }}"
+        run: |
+          git config --local user.name "${{ github.event.head_commit.committer.name }}"
+          git config --local user.email "${{ github.event.head_commit.committer.email }}"
+          git add README.md
+          git commit -m "bot: Build README.md file"
+          git push origin "${{ env.branch }}"
