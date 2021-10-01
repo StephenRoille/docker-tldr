@@ -12,15 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: pwd
-      - run: ls -la
-      - run: cat README.md
-      - run: cat Dockerfile
       - run: sed '/DOCKERFILE_CONTENT/r Dockerfile' README.md
-      - run: cat README.md
+      - run: git log
+      - run: git remote -v
+      - run: git config --list
 
   publish-readme:
     name: Publish READ.md to DockerHub
+    needs: [update-readme]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
