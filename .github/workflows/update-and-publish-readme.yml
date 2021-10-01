@@ -1,0 +1,32 @@
+name: Update README.md File and Publish to DockerHub
+on:
+  push:
+    branches:
+      - ci
+    paths:
+      - README.md
+
+jobs:
+  update-readme:
+    name: Include Dockerfile content in README.md file
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: pwd
+      - run: ls -la
+
+  publish-readme:
+    name: Publish READ.md to DockerHub
+    runs-on: ubuntu-latest
+    container:
+      image: chko/docker-pushrm:1
+      env:
+        DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKER_PASS: ${{ secrets.DOCKERHUB_PASSWORD }}
+      volumes:
+        - .:/tldr
+    steps:
+      - run: pwd
+      - run: ls -la /
+      - run: ls -la /tldr
+      - run: /docker-pushrm --help
