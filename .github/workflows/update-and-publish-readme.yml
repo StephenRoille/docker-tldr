@@ -4,7 +4,8 @@ on:
     branches:
       - ci
     paths:
-      - README.md
+      - README-template.md
+      - Dockerfile
 
 jobs:
   update-readme:
@@ -12,7 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sed -i '/DOCKERFILE_CONTENT/r Dockerfile' README.md
+      - run: sed -i '/DOCKERFILE_CONTENT/r Dockerfile' README-template.md
+      - run: rm README.md
+      - run: mv README-template.md README.md
       - run: git log
       - run: git remote -v
       - run: |
@@ -20,13 +23,13 @@ jobs:
           git config --local user.email "${{ github.event.head_commit.committer.email }}"
       - run: git config --list
       - run: git add README.md
-      - run: git commit --amend -m "${{ github.event.head_commit.message }}"
+      - run: git commit -m "bot:\ Auto-build README.md file"
       - run: git status
       - run: cat README.md
       - run: git diff README.md
       - run: git log
       - run: echo ${GITHUB_REF#refs/heads/}
-      - run: git push origin ${GITHUB_REF#refs/heads/} --force
+      - run: git push origin ${GITHUB_REF#refs/heads/}
       - run: echo '${{ toJSON(github) }}'
 
   publish-readme:
@@ -35,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: sleep 10
       - uses: christian-korneck/update-container-description-action@v1
         env:
           DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
