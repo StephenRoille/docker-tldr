@@ -1,8 +1,9 @@
 ![publish image to docker hub](https://github.com/StephenRoille/docker-tldr/actions/workflows/publish-image-and-readme.yml/badge.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 # tldr
 
-This is an unofficial image for the [tldr](https://tldr.sh/) project. More specifically it dockerize the [tldr Python client](https://github.com/tldr-pages/tldr-python-client).
+This is an unofficial image for the [tldr](https://tldr.sh/) project. More specifically it dockerizes the [tldr Python client](https://github.com/tldr-pages/tldr-python-client).
 
 ![Animation: docker-tldr CLI usage](https://raw.githubusercontent.com/StephenRoille/docker-tldr/master/assets/animation.svg)
 
@@ -16,7 +17,7 @@ The image is stored on DockerHub at [stephenroille/tldr](https://hub.docker.com/
 
 ## Example: Before Aliasing the `docker container run` Command
 
-Getting help using `mongo`,
+Example getting help with `mongo`,
 
 ```bash
 $ docker container run --rm -t -v ~/.tldr:/root/tldr stephenroille/tldr mongo
@@ -56,7 +57,7 @@ alias tldr='docker container run --rm -t -v ~/.tldr:/root/tldr stephenroille/tld
 
 ## Example: After Aliasing the `docker container run` Command
 
-Getting help using `redis-server`,
+Example getting help with `redis-server`,
 
 ```bash
 $ tldr redis-server
@@ -82,7 +83,7 @@ $ tldr redis-server
     redis-server --loglevel warning|notice|verbose|debug
 ```
 
-Default behavior when no argument is provided to the `tldr` command (due to `CMD = ["--help"]` in the `Dockerfile`),
+Given that `CMD` is set to `["--help"]` in the `Dockerfile`, the `tldr` command prints out help on its usage when no arguments are provided,
 
 ```bash
 $ tldr
@@ -95,7 +96,7 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --version         show program's version number and exit
+  -v, --version         show program\'s version number and exit
   -u, --update_cache    Update the local cache of pages and exit
   -p PLATFORM, --platform PLATFORM
                         Override the operating system [linux, osx, sunos, windows, common]
@@ -107,3 +108,7 @@ optional arguments:
   -L LANGUAGE, --language LANGUAGE
                         Override the default language
 ```
+
+## License
+
+This project is distributed under the GNU General Public License Version 3.
